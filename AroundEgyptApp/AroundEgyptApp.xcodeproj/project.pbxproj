@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		04333FBC2F3F2AB5008F82D6 /* AEShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04333FBB2F3F2AB5008F82D6 /* AEShared.framework */; };
+		04333FBD2F3F2AB5008F82D6 /* AEShared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04333FBB2F3F2AB5008F82D6 /* AEShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		04333FBF2F3F2AD2008F82D6 /* AECore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04333FBE2F3F2AD2008F82D6 /* AECore.framework */; };
+		04333FC02F3F2AD2008F82D6 /* AECore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04333FBE2F3F2AD2008F82D6 /* AECore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0456FC702F3F2B16005E991E /* AETour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0456FC6F2F3F2B16005E991E /* AETour.framework */; };
+		0456FC712F3F2B16005E991E /* AETour.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0456FC6F2F3F2B16005E991E /* AETour.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		04333C712F3F2351008F82D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,10 +32,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		04333FBA2F3F2A96008F82D6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0456FC712F3F2B16005E991E /* AETour.framework in Embed Frameworks */,
+				04333FBD2F3F2AB5008F82D6 /* AEShared.framework in Embed Frameworks */,
+				04333FC02F3F2AD2008F82D6 /* AECore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04333C632F3F234F008F82D6 /* AroundEgyptApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AroundEgyptApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04333C702F3F2351008F82D6 /* AroundEgyptAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AroundEgyptAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04333C7A2F3F2351008F82D6 /* AroundEgyptAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AroundEgyptAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04333FBB2F3F2AB5008F82D6 /* AEShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AEShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04333FBE2F3F2AD2008F82D6 /* AECore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AECore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0456FC6F2F3F2B16005E991E /* AETour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AETour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +80,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0456FC702F3F2B16005E991E /* AETour.framework in Frameworks */,
+				04333FBC2F3F2AB5008F82D6 /* AEShared.framework in Frameworks */,
+				04333FBF2F3F2AD2008F82D6 /* AECore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +109,7 @@
 				04333C652F3F234F008F82D6 /* AroundEgyptApp */,
 				04333C732F3F2351008F82D6 /* AroundEgyptAppTests */,
 				04333C7D2F3F2351008F82D6 /* AroundEgyptAppUITests */,
+				04333FB62F3F2A96008F82D6 /* Frameworks */,
 				04333C642F3F234F008F82D6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +124,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		04333FB62F3F2A96008F82D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0456FC6F2F3F2B16005E991E /* AETour.framework */,
+				04333FBE2F3F2AD2008F82D6 /* AECore.framework */,
+				04333FBB2F3F2AB5008F82D6 /* AEShared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +144,7 @@
 				04333C5F2F3F234F008F82D6 /* Sources */,
 				04333C602F3F234F008F82D6 /* Frameworks */,
 				04333C612F3F234F008F82D6 /* Resources */,
+				04333FBA2F3F2A96008F82D6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

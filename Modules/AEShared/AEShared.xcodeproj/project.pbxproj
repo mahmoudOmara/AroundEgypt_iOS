@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04333F922F3F29B1008F82D6 /* AEShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04333F882F3F29B1008F82D6 /* AEShared.framework */; };
+		04333FAE2F3F2A47008F82D6 /* AECore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04333FAD2F3F2A47008F82D6 /* AECore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		04333F882F3F29B1008F82D6 /* AEShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AEShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04333F912F3F29B1008F82D6 /* AESharedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AESharedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04333FAD2F3F2A47008F82D6 /* AECore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AECore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04333FAE2F3F2A47008F82D6 /* AECore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 			children = (
 				04333F8A2F3F29B1008F82D6 /* AEShared */,
 				04333F952F3F29B1008F82D6 /* AESharedTests */,
+				04333FAC2F3F2A47008F82D6 /* Frameworks */,
 				04333F892F3F29B1008F82D6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +77,14 @@
 				04333F912F3F29B1008F82D6 /* AESharedTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		04333FAC2F3F2A47008F82D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04333FAD2F3F2A47008F82D6 /* AECore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,7 +357,7 @@
 		04333F9B2F3F29B1008F82D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CTEDJ84N8;
@@ -381,7 +393,7 @@
 		04333F9C2F3F29B1008F82D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3CTEDJ84N8;
