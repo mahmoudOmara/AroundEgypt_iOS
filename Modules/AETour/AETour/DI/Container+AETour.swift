@@ -19,7 +19,7 @@ extension Container {
     public var persistenceClient: Factory<SwiftDataPersistenceClient> {
         self {
             // Define all SwiftData models used in this module
-            let modelTypes = [
+            let modelTypes: [any PersistentModel.Type] = [
                 ExperienceModel.self,
                 CityModel.self
             ]
@@ -56,5 +56,32 @@ extension Container {
             ExperienceRepository()
         }
         .singleton
+    }
+
+    // MARK: - Use Cases
+
+    /// Use case for fetching recommended experiences
+    public var getRecommendedExperiencesUseCase: Factory<GetRecommendedExperiencesUseCase> {
+        self { GetRecommendedExperiencesUseCase() }
+    }
+
+    /// Use case for fetching recent experiences
+    public var getRecentExperiencesUseCase: Factory<GetRecentExperiencesUseCase> {
+        self { GetRecentExperiencesUseCase() }
+    }
+
+    /// Use case for searching experiences
+    public var searchExperiencesUseCase: Factory<SearchExperiencesUseCase> {
+        self { SearchExperiencesUseCase() }
+    }
+
+    /// Use case for fetching experience details
+    public var getExperienceDetailsUseCase: Factory<GetExperienceDetailsUseCase> {
+        self { GetExperienceDetailsUseCase() }
+    }
+
+    /// Use case for liking an experience
+    public var likeExperienceUseCase: Factory<LikeExperienceUseCase> {
+        self { LikeExperienceUseCase() }
     }
 }
