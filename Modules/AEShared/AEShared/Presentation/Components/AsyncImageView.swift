@@ -18,6 +18,16 @@ public struct AsyncImageView: View {
     }
 
     public var body: some View {
+        Rectangle()
+            .opacity(0.5)
+            .overlay {
+                image
+                    .allowsHitTesting(false)
+            }
+            .clipped()
+    }
+    
+    private var image: some View {
         AsyncImage(url: URL(string: url)) { phase in
             switch phase {
             case .empty:

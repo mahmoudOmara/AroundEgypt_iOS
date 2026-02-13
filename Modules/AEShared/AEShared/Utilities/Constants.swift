@@ -13,5 +13,6 @@ public struct Constants {
     
     public struct Development {
         public static let randomImage = "https://picsum.photos/600/600"
+        public static let basicHTML = "<html><body>Sample 360 content</body></html>"
     }
 }
