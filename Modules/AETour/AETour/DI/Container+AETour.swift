@@ -33,13 +33,27 @@ extension Container {
         }
         .singleton
     }
+
+    // MARK: - Data Sources
+
+    /// Local data source for caching experiences
+    var experienceLocalDataSource: Factory<ExperienceLocalDataSource> {
+        self { ExperienceLocalDataSource() }
+            .singleton
+    }
+
+    /// Remote data source for fetching experiences from API
+    var experienceRemoteDataSource: Factory<ExperienceRemoteDataSource> {
+        self { ExperienceRemoteDataSource() }
+            .singleton
+    }
+
     // MARK: - Repository
 
     /// Experience repository - handles data operations for experiences
-    /// TODO: Replace stub with actual implementation when Data layer is ready
     public var experienceRepository: Factory<ExperienceRepositoryProtocol> {
         self {
-            fatalError("ExperienceRepository must be registered with Data layer implementation (not yet implemented)")
+            ExperienceRepository()
         }
         .singleton
     }
