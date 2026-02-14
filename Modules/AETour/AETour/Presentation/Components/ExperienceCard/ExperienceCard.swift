@@ -112,9 +112,10 @@ struct ExperienceCard: View {
     }
     
     private var button360: some View {
-        Button(action: on360Tap) {
-            HStack {
-                Spacer()
+        HStack {
+            Spacer()
+            
+            Button(action: on360Tap) {
                 VStack(spacing: 2) {
                     Image(systemName: "globe")
                         .font(.system(size: 18))
@@ -125,8 +126,10 @@ struct ExperienceCard: View {
                 .padding(AppSpacing.sm)
                 .background(AppColors.badge360Background)
                 .clipShape(Circle())
-                Spacer()
+                
             }
+            
+            Spacer()
         }
     }
     
