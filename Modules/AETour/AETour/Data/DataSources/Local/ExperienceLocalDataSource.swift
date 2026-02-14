@@ -60,7 +60,35 @@ final class ExperienceLocalDataSource {
         logger.info("Saving \(experiences.count) experiences to cache")
 
         try await persistenceClient.performBackgroundTask { context in
+            var cityCache: [Int: CityModel] = [:]
+
             for experience in experiences {
+                guard let cityId = experience.city?.id,
+                      let cityName = experience.city?.name else {
+                    context.insert(experience)
+                    continue
+                }
+
+                // Check cache first
+                if let cachedCity = cityCache[cityId] {
+                    experience.city = cachedCity
+                } else {
+                    // Check database
+                    let predicate = #Predicate<CityModel> { $0.id == cityId }
+                    let descriptor = FetchDescriptor(predicate: predicate)
+
+                    if let existingCity = try context.fetch(descriptor).first {
+                        experience.city = existingCity
+                        cityCache[cityId] = existingCity
+                    } else {
+                        // Create new city and cache it for subsequent experiences
+                        let newCity = CityModel(id: cityId, name: cityName)
+                        context.insert(newCity)
+                        experience.city = newCity
+                        cityCache[cityId] = newCity
+                    }
+                }
+
                 context.insert(experience)
             }
             try context.save()

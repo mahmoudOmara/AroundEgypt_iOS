@@ -17,7 +17,7 @@ struct ExperienceDTO: Codable {
     let likesNo: Int
     let recommended: Int
     let hasVideo: Int
-    let city: CityDTO
+    let city: CityDTO?
     let tourHtml: String
 
     enum CodingKeys: String, CodingKey {

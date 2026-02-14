@@ -19,7 +19,7 @@ extension ExperienceDTO {
             likesCount: likesNo,
             isRecommended: recommended == 1,
             hasVideo: hasVideo == 1,
-            city: city.toModel(),
+            city: city?.toModel(),
             tourHTML: tourHtml,
             isLiked: false
         )
