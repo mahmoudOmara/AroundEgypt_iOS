@@ -20,7 +20,13 @@ struct ExperienceVerticalSectionView: View {
     let onRetry: () async -> Void
 
     var body: some View {
-        Section {
+        VStack(alignment: .leading, spacing: AppSpacing.md) {
+            Text(title)
+                .font(AppTypography.titleSmall)
+                .foregroundColor(AppColors.textPrimary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, AppSpacing.screenPadding)
+
             switch state {
             case .idle, .loading:
                 LoadingView()
@@ -33,12 +39,6 @@ struct ExperienceVerticalSectionView: View {
             case .success(let experiences):
                 experiencesView(experiences: experiences)
             }
-        } header: {
-            Text(title)
-                .font(AppTypography.titleSmall)
-                .foregroundColor(AppColors.textPrimary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, AppSpacing.screenPadding)
         }
     }
     
