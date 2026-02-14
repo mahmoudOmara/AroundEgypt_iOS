@@ -84,10 +84,10 @@ public final class SwiftDataPersistenceClient: ObservableObject {
     /// - Returns: The result of the task
     /// - Throws: Any error thrown by the task
     public func performBackgroundTask<T>(_ block: @escaping (ModelContext) throws -> T) async throws -> T {
-        let context = backgroundContext()
         return try await withCheckedThrowingContinuation { continuation in
             Task {
                 do {
+                    let context = backgroundContext()
                     let result = try block(context)
                     try save(context: context)
                     continuation.resume(returning: result)
