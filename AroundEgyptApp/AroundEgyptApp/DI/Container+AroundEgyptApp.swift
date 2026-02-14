@@ -21,7 +21,7 @@ extension Container: @retroactive AutoRegistering {
         // This overrides the stub registered in Container+GMCore
         networkClient.register {
             let configuration = NetworkConfiguration(
-                baseURL: URL(string: "aroundegypt.34ml.com")!,
+                baseURL: URL(string: "https://aroundegypt.34ml.com")!,
                 requestTimeout: 30,
                 resourceTimeout: 60,
                 maxRetryAttempts: 3,
