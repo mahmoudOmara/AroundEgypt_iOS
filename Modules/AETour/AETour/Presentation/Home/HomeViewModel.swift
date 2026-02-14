@@ -97,8 +97,7 @@ final class HomeViewModel {
     func select360Experience(_ experience: ExperienceEntity) {
         coordinator.present(
             .virtualTour(htmlURL: experience.tourHTML),
-            style: .fullScreenCover,
-            options: .init(showDragIndicator: false)
+            style: .fullScreenCover
         )
     }
     

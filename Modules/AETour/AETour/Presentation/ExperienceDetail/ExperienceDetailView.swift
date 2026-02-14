@@ -50,6 +50,7 @@ struct ExperienceDetailView: View {
                 has360: !experience.tourHTML.isEmpty,
                 hasVideo: experience.hasVideo,
                 onExploreTap: {
+                    viewModel.select360Experience()
                 }
             )
 

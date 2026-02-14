@@ -63,6 +63,15 @@ final class ExperienceDetailViewModel {
         }
     }
 
+    /// Selects an experience for 360 view
+    func select360Experience() {
+        guard let currentExperience = experience else { return }
+        coordinator.present(
+            .virtualTour(htmlURL: currentExperience.tourHTML),
+            style: .fullScreenCover
+        )
+    }
+    
     /// Likes the experience with optimistic update
     func likeExperience() async {
         guard let currentExperience = experience else { return }
