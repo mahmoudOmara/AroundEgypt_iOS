@@ -115,22 +115,21 @@ final class ExperienceRepository: ExperienceRepositoryProtocol {
         }
     }
 
-    func likeExperience(id: String) async throws -> ExperienceEntity {
+    func likeExperience(id: String) async throws -> Int {
         do {
-            let dto = try await remoteDataSource.likeExperience(id: id)
-            let model = dto.toModel()
+            let likesCount = try await remoteDataSource.likeExperience(id: id)
 
             do {
                 try await localDataSource.updateLikeStatus(
                     id: id,
                     isLiked: true,
-                    likesCount: model.likesCount
+                    likesCount: likesCount
                 )
             } catch let swiftDataError as SwiftDataError {
                 logger.error("Failed to update like status in cache: \(swiftDataError)")
             }
 
-            return model.toEntity()
+            return likesCount
         } catch let error as NetworkError {
             throw ExperienceError.networkError(error)
         }

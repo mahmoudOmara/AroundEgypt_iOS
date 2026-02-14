@@ -85,8 +85,23 @@ final class ExperienceDetailViewModel {
         detailState = .success(optimisticExperience)
 
         do {
-            let updatedExperience = try await likeUseCase.execute(id: currentExperience.id)
-            detailState = .success(updatedExperience)
+            let updatedLikesCount = try await likeUseCase.execute(id: currentExperience.id)
+
+            // Create updated experience with the returned likes count
+            let confirmedExperience = ExperienceEntity(
+                id: currentExperience.id,
+                title: currentExperience.title,
+                coverPhoto: currentExperience.coverPhoto,
+                description: currentExperience.description,
+                viewsCount: currentExperience.viewsCount,
+                likesCount: updatedLikesCount,
+                isRecommended: currentExperience.isRecommended,
+                hasVideo: currentExperience.hasVideo,
+                city: currentExperience.city,
+                tourHTML: currentExperience.tourHTML,
+                isLiked: true
+            )
+            detailState = .success(confirmedExperience)
         } catch {
             // Revert on failure
             detailState = .success(currentExperience)

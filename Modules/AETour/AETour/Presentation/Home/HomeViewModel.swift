@@ -38,6 +38,10 @@ final class HomeViewModel {
     @ObservationIgnored
     @Injected(\.searchExperiencesUseCase)
     private var searchUseCase: SearchExperiencesUseCase
+    
+    @ObservationIgnored
+    @Injected(\.likeExperienceUseCase)
+    private var likeUseCase: LikeExperienceUseCase
 
     // MARK: - Initializer
 
@@ -88,6 +92,57 @@ final class HomeViewModel {
             options: .init(showDragIndicator: false)
         )
     }
+    
+    /// Selects an experience for 360 view
+    func select360Experience(_ experience: ExperienceEntity) {
+        
+    }
+    
+    /// Like an experience with optimistic update
+    func likeExperience(_ experience: ExperienceEntity) async {
+        guard !experience.isLiked else { return } // Already liked
+
+        // Create optimistic experience
+        let optimisticExperience = ExperienceEntity(
+            id: experience.id,
+            title: experience.title,
+            coverPhoto: experience.coverPhoto,
+            description: experience.description,
+            viewsCount: experience.viewsCount,
+            likesCount: experience.likesCount + 1,
+            isRecommended: experience.isRecommended,
+            hasVideo: experience.hasVideo,
+            city: experience.city,
+            tourHTML: experience.tourHTML,
+            isLiked: true
+        )
+
+        // Optimistically update in both lists
+        updateExperienceInLists(optimisticExperience)
+
+        do {
+            let updatedLikesCount = try await likeUseCase.execute(id: experience.id)
+
+            // Create updated experience with the returned likes count
+            let confirmedExperience = ExperienceEntity(
+                id: experience.id,
+                title: experience.title,
+                coverPhoto: experience.coverPhoto,
+                description: experience.description,
+                viewsCount: experience.viewsCount,
+                likesCount: updatedLikesCount,
+                isRecommended: experience.isRecommended,
+                hasVideo: experience.hasVideo,
+                city: experience.city,
+                tourHTML: experience.tourHTML,
+                isLiked: true
+            )
+            updateExperienceInLists(confirmedExperience)
+        } catch {
+            // Revert on failure
+            updateExperienceInLists(experience)
+        }
+    }
 
     /// Performs search with the current query
     func performSearch() async {
@@ -129,6 +184,26 @@ final class HomeViewModel {
             return .success(experiences)
         } catch {
             return .failure(error)
+        }
+    }
+
+    private func updateExperienceInLists(_ experience: ExperienceEntity) {
+        // Update in recommended list if present
+        if case .success(let experiences) = recommendedState {
+            if let index = experiences.firstIndex(where: { $0.id == experience.id }) {
+                var updated = experiences
+                updated[index] = experience
+                recommendedState = .success(updated)
+            }
+        }
+
+        // Update in recent list if present
+        if case .success(let experiences) = recentState {
+            if let index = experiences.firstIndex(where: { $0.id == experience.id }) {
+                var updated = experiences
+                updated[index] = experience
+                recentState = .success(updated)
+            }
         }
     }
 }

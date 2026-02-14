@@ -24,9 +24,9 @@ public final class LikeExperienceUseCase {
 
     /// Executes the use case to like an experience
     /// - Parameter id: Unique identifier of the experience to like
-    /// - Returns: Updated experience with new like status
+    /// - Returns: Updated likes count
     /// - Throws: ExperienceError if the operation fails
-    public func execute(id: String) async throws -> ExperienceEntity {
+    public func execute(id: String) async throws -> Int {
         // Validate ID
         guard !id.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             throw ExperienceError.invalidExperienceID

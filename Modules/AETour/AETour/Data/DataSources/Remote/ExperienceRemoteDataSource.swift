@@ -74,11 +74,11 @@ final class ExperienceRemoteDataSource {
         return try handleResponse(response)
     }
 
-    func likeExperience(id: String) async throws -> ExperienceDTO {
+    func likeExperience(id: String) async throws -> Int {
         logger.info("Liking experience with ID: \(id)")
         let response = try await networkClient.perform(
             ExperiencesAPIRequest.like(id: id),
-            type: APIResponse<ExperienceDTO>.self
+            type: APIResponse<Int>.self
         )
         return try handleResponse(response)
     }

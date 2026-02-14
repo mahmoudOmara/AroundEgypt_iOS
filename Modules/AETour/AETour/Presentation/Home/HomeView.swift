@@ -131,10 +131,12 @@ struct HomeView: View {
                 viewModel.selectExperience(experience)
             },
             on360Tap: { experience in
-                // TODO: Open 360 tour
+                viewModel.select360Experience(experience)
             },
             onLikeTap: { experience in
-                // TODO: Handle like
+                Task {
+                    await viewModel.likeExperience(experience)
+                }
             },
             onRetry: {
                 await viewModel.loadInitialData()
@@ -151,10 +153,12 @@ struct HomeView: View {
                 viewModel.selectExperience(experience)
             },
             on360Tap: { experience in
-                // TODO: Open 360 tour
+                viewModel.select360Experience(experience)
             },
             onLikeTap: { experience in
-                // TODO: Handle like
+                Task {
+                    await viewModel.likeExperience(experience)
+                }
             },
             onRetry: {
                 await viewModel.loadInitialData()
@@ -171,10 +175,12 @@ struct HomeView: View {
                 viewModel.selectExperience(experience)
             },
             on360Tap: { experience in
-                // TODO: Open 360 tour
+                viewModel.select360Experience(experience)
             },
             onLikeTap: { experience in
-                // TODO: Handle like
+                Task {
+                    await viewModel.likeExperience(experience)
+                }
             },
             onRetry: {
                 Task {

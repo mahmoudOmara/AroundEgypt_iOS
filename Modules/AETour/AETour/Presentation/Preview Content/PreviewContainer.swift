@@ -55,25 +55,13 @@ final class StubExperienceRepository: ExperienceRepositoryProtocol {
         return experience
     }
 
-    func likeExperience(id: String) async throws -> ExperienceEntity {
+    func likeExperience(id: String) async throws -> Int {
         try? await Task.sleep(for: .milliseconds(300))
         guard let experience = PreviewData.sampleExperiences.first(where: { $0.id == id }) else {
             throw ExperienceError.experienceNotFound
         }
 
-        return ExperienceEntity(
-            id: experience.id,
-            title: experience.title,
-            coverPhoto: experience.coverPhoto,
-            description: experience.description,
-            viewsCount: experience.viewsCount,
-            likesCount: experience.likesCount + 1,
-            isRecommended: experience.isRecommended,
-            hasVideo: experience.hasVideo,
-            city: experience.city,
-            tourHTML: experience.tourHTML,
-            isLiked: true
-        )
+        return experience.likesCount + 1
     }
 }
 

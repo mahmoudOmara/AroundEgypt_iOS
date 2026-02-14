@@ -39,9 +39,9 @@ public protocol ExperienceRepositoryProtocol {
 
     /// Likes an experience
     /// - Parameter id: Unique identifier of the experience to like
-    /// - Returns: Updated experience with new like status
+    /// - Returns: Updated likes count
     /// - Throws: ExperienceError if the operation fails
-    func likeExperience(id: String) async throws -> ExperienceEntity
+    func likeExperience(id: String) async throws -> Int
 }
 
 // MARK: - Default Parameters
