@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a city associated with an experience
-public struct CityEntity {
+public struct CityEntity: Hashable {
 
     // MARK: - Properties
 

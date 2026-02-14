@@ -22,6 +22,9 @@ final class ExperienceDetailViewModel {
     // MARK: - Dependencies
 
     @ObservationIgnored
+    private let coordinator: TourCoordinator
+
+    @ObservationIgnored
     @Injected(\.getExperienceDetailsUseCase)
     private var getDetailsUseCase: GetExperienceDetailsUseCase
 
@@ -41,8 +44,9 @@ final class ExperienceDetailViewModel {
 
     // MARK: - Initialization
 
-    init(experienceId: String) {
-        self.experienceId = experienceId
+    init(coordinator: TourCoordinator, experience: ExperienceEntity) {
+        self.coordinator = coordinator
+        self.experienceId = experience.id
     }
 
     // MARK: - Methods

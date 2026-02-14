@@ -168,7 +168,7 @@ struct HomeView: View {
             emptyStateMessage: "No results found for \"\(viewModel.searchQuery)\"",
             state: viewModel.searchState,
             onExperienceTap: { experience in
-                // TODO: Open 360 tour
+                viewModel.selectExperience(experience)
             },
             on360Tap: { experience in
                 // TODO: Open 360 tour
@@ -187,5 +187,6 @@ struct HomeView: View {
 
 #Preview {
     Container.setupPreviewContainer()
-    return HomeView(viewModel: HomeViewModel())
+    let coordinator = TourCoordinator()
+    return HomeView(viewModel: HomeViewModel(coordinator: coordinator))
 }

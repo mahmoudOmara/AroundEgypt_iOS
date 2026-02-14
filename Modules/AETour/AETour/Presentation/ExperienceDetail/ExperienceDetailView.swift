@@ -78,7 +78,13 @@ struct ExperienceDetailView: View {
 
 #Preview {
     Container.setupPreviewContainer()
+    let coordinator = TourCoordinator()
     return NavigationStack {
-        ExperienceDetailView(viewModel: ExperienceDetailViewModel(experienceId: "1"))
+        ExperienceDetailView(
+            viewModel: ExperienceDetailViewModel(
+                coordinator: coordinator,
+                experience: PreviewData.sampleExperience
+            )
+        )
     }
 }

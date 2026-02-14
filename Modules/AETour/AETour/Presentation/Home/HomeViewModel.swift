@@ -19,11 +19,13 @@ final class HomeViewModel {
 
     var recommendedState: AsyncState<[ExperienceEntity]> = .idle
     var recentState: AsyncState<[ExperienceEntity]> = .idle
-    var selectedExperience: ExperienceEntity?
     var searchQuery: String = ""
     var searchState: AsyncState<[ExperienceEntity]> = .idle
 
     // MARK: - Dependencies
+
+    @ObservationIgnored
+    private let coordinator: TourCoordinator
 
     @ObservationIgnored
     @Injected(\.getRecommendedExperiencesUseCase)
@@ -36,6 +38,12 @@ final class HomeViewModel {
     @ObservationIgnored
     @Injected(\.searchExperiencesUseCase)
     private var searchUseCase: SearchExperiencesUseCase
+
+    // MARK: - Initializer
+
+    init(coordinator: TourCoordinator) {
+        self.coordinator = coordinator
+    }
 
     // MARK: - Computed Properties
 
@@ -74,7 +82,11 @@ final class HomeViewModel {
 
     /// Selects an experience for detail view
     func selectExperience(_ experience: ExperienceEntity) {
-        selectedExperience = experience
+        coordinator.present(
+            .experienceDetail(experience: experience),
+            style: .sheet,
+            options: .init(showDragIndicator: false)
+        )
     }
 
     /// Performs search with the current query

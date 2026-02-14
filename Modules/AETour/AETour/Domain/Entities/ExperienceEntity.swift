@@ -8,7 +8,7 @@
 import Foundation
 
 /// Core domain entity representing a tour experience
-public struct ExperienceEntity {
+public struct ExperienceEntity: Hashable {
 
     // MARK: - Properties
 
