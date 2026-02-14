@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:AroundEgyptApp/AroundEgyptApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Modules/AETour/AETour.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Modules/AEShared/AEShared.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Modules/AECore/AECore.xcodeproj">
+   </FileRef>
+</Workspace>
