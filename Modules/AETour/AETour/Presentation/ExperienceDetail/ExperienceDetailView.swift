@@ -39,39 +39,34 @@ struct ExperienceDetailView: View {
         .task {
             await viewModel.loadDetails()
         }
-        .refreshable {
-            await viewModel.refresh()
-        }
     }
     
     private func experienceContent(_ experience: ExperienceEntity) -> some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                // Hero section
-                ExperienceHeroView(
-                    coverPhoto: experience.coverPhoto,
-                    viewsCount: experience.viewsCount,
-                    has360: !experience.tourHTML.isEmpty,
-                    hasVideo: experience.hasVideo,
-                    onExploreTap: {
-                    }
-                )
+        VStack(spacing: 0) {
+            // Hero section
+            ExperienceHeroView(
+                coverPhoto: experience.coverPhoto,
+                viewsCount: experience.viewsCount,
+                has360: !experience.tourHTML.isEmpty,
+                hasVideo: experience.hasVideo,
+                onExploreTap: {
+                }
+            )
 
-                // Info section
-                ExperienceInfoView(
-                    title: experience.title,
-                    cityName: experience.city.name,
-                    description: experience.description,
-                    likesCount: experience.likesCount,
-                    isLiked: experience.isLiked,
-                    onLikeTap: {
-                        await viewModel.likeExperience()
-                    },
-                    onShareTap: {
-                        // TODO: Share action
-                    }
-                )
-            }
+            // Info section
+            ExperienceInfoView(
+                title: experience.title,
+                cityName: experience.city.name,
+                description: experience.description,
+                likesCount: experience.likesCount,
+                isLiked: experience.isLiked,
+                onLikeTap: {
+                    await viewModel.likeExperience()
+                },
+                onShareTap: {
+                    // TODO: Share action
+                }
+            )
         }
     }
 }

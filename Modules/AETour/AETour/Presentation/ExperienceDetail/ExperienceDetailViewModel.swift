@@ -94,8 +94,4 @@ final class ExperienceDetailViewModel {
 
     }
 
-    /// Refreshes the experience details
-    func refresh() async {
-        await loadDetails(forceRefresh: true)
-    }
 }
