@@ -21,6 +21,7 @@ public enum TourDestination: Hashable {
 /// Defines modal destinations in the tour flow
 public enum TourModalDestination: Hashable {
     case experienceDetail(experience: ExperienceEntity)
+    case virtualTour(htmlURL: String)
 }
 
 // MARK: - Tour Coordinator
@@ -61,6 +62,8 @@ public final class TourCoordinator: @MainActor NavigationCoordinator {
         switch destination {
         case .experienceDetail(let experience):
             createExperienceDetailView(experience: experience)
+        case .virtualTour(let htmlURL):
+            createVirtualTourView(htmlURL: htmlURL)
         }
     }
 
@@ -74,5 +77,9 @@ public final class TourCoordinator: @MainActor NavigationCoordinator {
     private func createExperienceDetailView(experience: ExperienceEntity) -> some View {
         let viewModel = ExperienceDetailViewModel(coordinator: self, experience: experience)
         return ExperienceDetailView(viewModel: viewModel)
+    }
+
+    private func createVirtualTourView(htmlURL: String) -> some View {
+        return VirtualTourView(htmlURL: htmlURL, coordinator: self)
     }
 }

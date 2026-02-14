@@ -95,7 +95,11 @@ final class HomeViewModel {
     
     /// Selects an experience for 360 view
     func select360Experience(_ experience: ExperienceEntity) {
-        
+        coordinator.present(
+            .virtualTour(htmlURL: experience.tourHTML),
+            style: .fullScreenCover,
+            options: .init(showDragIndicator: false)
+        )
     }
     
     /// Like an experience with optimistic update
